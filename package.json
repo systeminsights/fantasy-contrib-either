@@ -1,0 +1,39 @@
+{
+  "name": "fantasy-contrib-either",
+  "version": "0.0.1",
+  "description": "Additional combinators for fantasy-land Either data structure.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "in-publish && (mkdir lib && coffee -cbo lib src) || in-install",
+    "postpublish": "rm -rf lib",
+    "test": "mocha test/**/*-spec.coffee",
+    "watch": "mocha --watch test/**/*-spec.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/systeminsights/fantasy-contrib-either"
+  },
+  "keywords": [
+    "fantasy-land",
+    "fp",
+    "combinator",
+    "either",
+    "disjunction"
+  ],
+  "author": "System Insights",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/systeminsights/fantasy-contrib-either/issues"
+  },
+  "homepage": "https://github.com/systeminsights/fantasy-contrib-either",
+  "devDependencies": {
+    "chai": "^2.1.1",
+    "coffee-script": "^1.9.1",
+    "in-publish": "^1.1.1",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "fantasy-options": "0.0.1",
+    "ramda": "^0.10.0"
+  }
+}
