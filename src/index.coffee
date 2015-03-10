@@ -1,5 +1,5 @@
-R      = require 'ramda'
-Option = require 'fantasy-options'
+R = require 'ramda'
+{Some, None} = require 'fantasy-options'
 
 # :: Either a b -> Boolean
 #
@@ -63,7 +63,7 @@ getOrElse = R.curry((b, e) ->
 # Return None if the Either is Left or Some(b) if it is Right.
 #
 toOption = (e) ->
-  e.fold(R.always(Option.None), Option.Some)
+  e.fold(R.always(None), Some)
 
 # :: Either a b -> [b]
 #
