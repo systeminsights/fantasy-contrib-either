@@ -28,7 +28,8 @@ rightMap = R.curry((f, e) ->
 # Run the side-effect on the right side of the Either
 #
 foreach = R.curry((f, e) ->
-  R.compose(R.always(undefined), rightMap(f)))
+  rightMap(f, e)
+  undefined)
 
 # :: (b -> Boolean) -> Either a b -> Boolean
 #
