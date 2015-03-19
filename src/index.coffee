@@ -1,4 +1,5 @@
 R = require 'ramda'
+{Left, Right} = require 'fantasy-eithers'
 {Some, None} = require 'fantasy-options'
 
 # :: Either a b -> Boolean
@@ -72,6 +73,17 @@ toOption = (e) ->
 toArray = (e) ->
   e.fold(R.always([]), R.of)
 
+# :: (() -> a) -> Either Error a
+#
+# Run the given function, returning values on the Right, catching exceptions
+# and returning them on the Left.
+#
+fromTryCatch = (f) ->
+  try
+    Right(f())
+  catch e
+    Left(e)
+
 module.exports = {
   isLeft,
   isRight,
@@ -83,6 +95,7 @@ module.exports = {
   valueOr,
   getOrElse,
   toOption,
-  toArray
+  toArray,
+  fromTryCatch
 }
 

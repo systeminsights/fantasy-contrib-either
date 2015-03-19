@@ -6,8 +6,8 @@
   "scripts": {
     "prepublish": "in-publish && (mkdir lib && coffee -cbo lib src) || in-install",
     "postpublish": "rm -rf lib",
-    "test": "mocha test/**/*-spec.coffee",
-    "watch": "mocha --watch test/**/*-spec.coffee"
+    "test": "mocha --no-colors test/**/*-spec.coffee",
+    "watch": "mocha --no-colors --watch test/**/*-spec.coffee"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "mocha": "^2.1.0"
   },
   "dependencies": {
+    "fantasy-eithers": "0.0.2",
     "fantasy-options": "0.0.1",
     "ramda": "^0.10.0"
   }
