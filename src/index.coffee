@@ -6,23 +6,23 @@ R = require 'ramda'
 #
 # Returns whether the either is a Right value satisfying the predicate.
 #
-exists = R.curry((p, e) ->
-  e.fold(R.always(false), p))
+exists = R.curry (p, e) ->
+  e.fold(R.always(false), p)
 
 # :: (b -> Boolean) -> Either a b -> Boolean
 #
 # Returns true if the either is Left or if the Right value satisfies the predicate.
 #
-forall = R.curry((p, e) ->
-  e.fold(R.always(true), p))
+forall = R.curry (p, e) ->
+  e.fold(R.always(true), p)
 
 # :: (b -> ()) -> Either a b -> ()
 #
 # Run the side-effect on the right side of the Either
 #
-foreach = R.curry((f, e) ->
+foreach = R.curry (f, e) ->
   rightMap(f, e)
-  undefined)
+  undefined
 
 # :: (() -> a) -> Either Error a
 #
@@ -39,8 +39,8 @@ fromTryCatch = (f) ->
 #
 # Return the Right value of this either or the given value if Left.
 #
-getOrElse = R.curry((b, e) ->
-  valueOr(R.always(b), e))
+getOrElse = R.curry (b, e) ->
+  valueOr(R.always(b), e)
 
 # :: Either a b -> Boolean
 #
@@ -57,12 +57,12 @@ isRight = (e) ->
   e.fold(R.always(false), R.always(true))
 
 # :: (a -> c) -> Either a b -> Either c b
-leftMap = R.curry((f, e) ->
-  e.bimap(f, R.identity))
+leftMap = R.curry (f, e) ->
+  e.bimap(f, R.identity)
 
 # :: (b -> c) -> Either a b -> Either a c
-rightMap = R.curry((f, e) ->
-  e.bimap(R.identity, f))
+rightMap = R.curry (f, e) ->
+  e.bimap(R.identity, f)
 
 # :: Either a b -> [b]
 #
@@ -81,8 +81,8 @@ toOption = (e) ->
 #
 # Return the Right value of this either or run the given function on the Left.
 #
-valueOr = R.curry((f, e) ->
-  e.fold(f, R.identity))
+valueOr = R.curry (f, e) ->
+  e.fold(f, R.identity)
 
 module.exports = {
   exists,
